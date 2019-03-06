@@ -11,7 +11,7 @@ namespace DAL.Identity
 {
     public class ApplicationRoleManager : RoleManager<ApplicationRole>
     {
-        public ApplicationRoleManager(RoleStore<ApplicationRole> store)
+        public ApplicationRoleManager(IRoleStore<ApplicationRole> store)
                     : base(store)
         { }
     }

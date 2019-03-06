@@ -14,5 +14,10 @@ namespace DAL.Identity
                 : base(store)
         {
         }
+
+        public Task<ApplicationUser> FindByEmailAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
