@@ -11,13 +11,8 @@ namespace DAL.Identity
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
-                : base(store)
+                 : base(store)
         {
-        }
-
-        public Task<ApplicationUser> FindByEmailAsync(string email)
-        {
-            throw new NotImplementedException();
         }
     }
 }
