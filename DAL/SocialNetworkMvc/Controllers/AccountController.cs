@@ -91,11 +91,11 @@ namespace SocialNetworkMvc.Controllers
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
-                    return View("SuccessRegister");
+                    return RedirectToAction("Index","Home");
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
-            return RedirectToAction("UserAdded");
+            return RedirectToAction("Index","Home");
         }
         private async Task SetInitialDataAsync()
         {
