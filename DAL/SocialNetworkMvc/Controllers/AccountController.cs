@@ -109,5 +109,23 @@ namespace SocialNetworkMvc.Controllers
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }
+
+
+
+        public ActionResult LoadUser()
+        {
+
+
+
+
+
+
+            var smalluser = UserService.GetUser(User.Identity.Name);
+            if(smalluser==null)
+            return PartialView("_PartialLoginView", null);
+            else
+                return PartialView("_PartialLoginView",
+                    new SmallUserModel { Name = smalluser.Result.Name, Email = smalluser.Result.Email });
+        }
     }
 }

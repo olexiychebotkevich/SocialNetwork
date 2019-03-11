@@ -22,6 +22,9 @@ namespace BLL.Services
             Database = uow;
         }
 
+
+        
+
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
@@ -50,6 +53,8 @@ namespace BLL.Services
             ClaimsIdentity claim = null;
             // находим пользователя
             ApplicationUser user = await Database.UserManager.FindAsync(userDto.Email, userDto.Password);
+            
+            
             // авторизуем его и возвращаем объект ClaimsIdentity
             if (user != null)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
@@ -75,6 +80,15 @@ namespace BLL.Services
         public void Dispose()
         {
             Database.Dispose();
+        }
+
+        public async Task<SmallUserDTO> GetUser(string Email)
+        {
+            SmallUserDTO smallUserDTO = null;
+            ApplicationUser user = await Database.UserManager.FindByEmailAsync(Email);
+            if(user!=null)
+            smallUserDTO= new SmallUserDTO { Name = user.UserName, Email = user.Email };
+            return smallUserDTO;
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model SocialNetworkMvc.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+ 
+
+
+    <p>
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+    </p>
+
+    <p>
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password)
+        @Html.ValidationMessageFor(x => x.Password)
+    </p>
+
+
+    
+
+
+
+
+
+    <input type="submit" value="Register" />
+}
+
