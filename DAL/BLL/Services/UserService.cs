@@ -87,7 +87,7 @@ namespace BLL.Services
             SmallUserDTO smallUserDTO = null;
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(Email);
             if(user!=null)
-            smallUserDTO= new SmallUserDTO { Name = user.UserName, Email = user.Email };
+            smallUserDTO = new SmallUserDTO { Name = user.UserName, Email = user.Email };
             return smallUserDTO;
         }
     }

@@ -114,12 +114,6 @@ namespace SocialNetworkMvc.Controllers
 
         public ActionResult LoadUser()
         {
-
-
-
-
-
-
             var smalluser = UserService.GetUser(User.Identity.Name);
             if(smalluser==null)
             return PartialView("_PartialLoginView", null);
