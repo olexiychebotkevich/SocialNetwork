@@ -85,7 +85,8 @@ namespace SocialNetworkMvc.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    Address = model.Address,
+                    Address = model.City,
+                    
                     Name = model.Name,
                     Role = "user"
                 };
