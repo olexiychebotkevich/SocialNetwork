@@ -2,26 +2,26 @@
 @{
     ViewBag.Title = "MyPage";
 }
-<body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">>
+<body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
 <div>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:10px;margin-bottom:10px;">
             <div class="col-sm">
                 <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:200px" />
             </div>
-            <div class="col-sm">
-                <h3> Basic info</h3>
+            <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
+                <h3 style="font-size:25px;"> Basic info</h3>
 
-                @Html.LabelFor(x => Model.Name)
+               
                 @Html.ValueFor(x => Model.Name)<br />
 
-                @Html.LabelFor(x => Model.Email)
+               
                 @Html.ValueFor(x => Model.Email)<br />
 
-                @Html.LabelFor(x => Model.City)
+               
                 @Html.ValueFor(x => Model.City)<br />
 
-                @Html.LabelFor(x => Model.Age)
+                
                 @Html.ValueFor(x => Model.Age)<br />
 
 

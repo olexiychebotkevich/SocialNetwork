@@ -25,7 +25,8 @@ namespace SocialNetworkMvc.Models
         public string Name { get; set; }
         
        [Required]
-       public int Age { get; set; }
+        [Range(12, 60, ErrorMessage = "Age should be [12 and 60]")]
+        public int Age { get; set; }
 
 
 

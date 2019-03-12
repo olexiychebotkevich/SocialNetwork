@@ -172,7 +172,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\GroupsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MyGroupsModel.cs" />
     <Compile Include="Models\MyPageModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -262,6 +265,11 @@
     <Content Include="Views\Shared\_PartialViewUser.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
     <Content Include="Views\Shared\_PartialViewPost.cshtml" />
+    <Content Include="Views\Shared\_PartialViewGroups.cshtml" />
+    <Content Include="Views\Home\Groups.cshtml" />
+    <Content Include="Views\Home\MyGroups.cshtml" />
+    <Content Include="Views\Shared\_PartialViewMyGroups.cshtml" />
+    <Content Include="Views\Home\Group.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

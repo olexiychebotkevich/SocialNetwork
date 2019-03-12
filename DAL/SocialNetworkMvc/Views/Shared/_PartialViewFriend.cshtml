@@ -2,20 +2,20 @@
 @{
     ViewBag.Title = "PartialViewFriend";
 }
-<div style="margin-left:200px;margin-right:200px">
+<div style="margin-left:200px;margin-right:200px" >
     <div class="container">
         <div class="row">
             <div class="col-sm">
-              <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:100px"/>
+              <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style=" margin-top:10px;margin-bottom:10px;height:150px"/>
             </div>
-            <div class="col-sm">
-                @Html.LabelFor(x => Model.Name)<br />
-                @Html.LabelFor(x => Model.Country)<br />
-                @Html.LabelFor(x => Model.City)
+            <div class="col-sm" style="font-family:'MV Boli';font-size:25px; margin-top:10px;">
+                @Html.ValueFor(x => Model.Name)<br />
+                @Html.ValueFor(x => Model.Country)<br />
+                @Html.ValueFor(x => Model.City)
             </div>
-            <div class="col-sm">
-                @Html.ActionLink("Go to page", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
-                @Html.ActionLink("Remove from friends", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+            <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
+                @Html.ActionLink("Go to page", "Contact", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })<br />
+                @Html.ActionLink("Remove from friends", "Contact", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
 
             </div>
         </div>

@@ -32,5 +32,23 @@ namespace SocialNetworkMvc.Controllers
 
             return View();
         }
+        public ActionResult Groups()
+        {
+
+
+            return View();
+        }
+        public ActionResult MyGroups()
+        {
+
+
+            return View();
+        }
+        public ActionResult Group()
+        {
+
+
+            return View();
+        }
     }
 }

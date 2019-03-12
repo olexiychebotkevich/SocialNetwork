@@ -3,15 +3,15 @@
     ViewBag.Title = "Registration";
 }
 <link href="/Content/Custom.css" rel="stylesheet" type="text/css" />
-@*https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScITe_Z6LEV9RS-cOI5JKs7r7_6wwwwOGVwsb4xebsvuIEfsFL*@
-<body style="background-image:url('https://kh.viyar.ua/store/Items/photos/ph25734.jpg')">
 
-    <div class="container py-5">
+<body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
+
+    <div class="container py-5" >
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
-                        <div class="card rounded-0">
+                        <div class="card rounded-0" style="background-color:sandybrown">
                             <div class="card-header">
                                 <h3 class="mb-0" style="font-size:40px;font-family:Algerian">Registration</h3>
                             </div>
@@ -21,7 +21,7 @@
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
-                                    <div>
+                                         <div>
                                         @Html.ValidationSummary()
 
                                         <div class="form-group" style="font-family:Algerian;">
@@ -30,7 +30,7 @@
                                             @Html.ValidationMessageFor(x => x.Name)
 
                                         </div>
-                                        <div class="form-group" style="font-family:Algerian;">
+                                        <div class="form-group" style="font-family:Algerian; ">
                                             @Html.LabelFor(x => x.Country)<br>
                                             @Html.EditorFor(x => x.Country)
                                             @Html.ValidationMessageFor(x => x.Country)
@@ -62,13 +62,9 @@
                                             @Html.PasswordFor(x => x.ConfirmPassword)
                                             @Html.ValidationMessageFor(x => x.ConfirmPassword)
                                         </div>
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.ConfirmPassword)<br>
-                                            @Html.PasswordFor(x => x.ConfirmPassword)
-                                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
-                                        </div>
+                                        
                                        
-                                    </div>
+                                        </div>
                                     }
 
                                     <div id="menuBall2" class="menuBall">

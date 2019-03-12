@@ -6,15 +6,15 @@ using System.Web;
 
 namespace SocialNetworkMvc.Models
 {
-    public class PostModel
+    public class GroupModel
     {
         [Required]
         public string Subject { get; set; }
         [Required]
-        public string Text { get; set; }
+        public string Description { get; set; }
+        [Required]
+        public string Name { get; set; }
         [Required]
         public string User { get; set; }
-        [Required]
-        public DateTime Date { get; set; }
     }
 }
