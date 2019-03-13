@@ -322,3 +322,6 @@ div#partyInfo {
     #darkMe.showMe, #partyInfo.showMe {
         visibility: visible;
     }
+ li{
+     color: black;
+ }
