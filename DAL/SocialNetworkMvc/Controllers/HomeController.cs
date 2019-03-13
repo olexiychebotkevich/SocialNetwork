@@ -14,16 +14,20 @@ namespace SocialNetworkMvc.Controllers
     {
 
 
-        IServiceCreator serviceCreator = new ServiceCreator();
-
-        private IGroupService CreateGroupService()
+        private IGroupService GroupService
         {
-            return serviceCreator.CreateGroupService("DefaultConnection");
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IGroupService>();
+
+            }
         }
+
+
+       
 
         public ActionResult Index()
         {
-            GroupDTO group = new GroupDTO { Name = "Chotkiy paca", Description = "Best group from all groups" };
            
             return View();
         }
@@ -38,6 +42,19 @@ namespace SocialNetworkMvc.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public  ActionResult AddGroup()
+        {
+            GroupDTO group = new GroupDTO { Name = $"New Group {DateTime.Now.Second} ", Description = "Best group from all groups in world" };
+
+            GroupService.Create(group);
+
+            ViewBag.Message = "Group Added";
 
             return View();
         }

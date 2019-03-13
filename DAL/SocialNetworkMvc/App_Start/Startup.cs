@@ -21,8 +21,7 @@ namespace SocialNetworkMvc.App_Start
             
             app.CreatePerOwinContext<IUserService>(CreateUserService);
 
-            
-
+            app.CreatePerOwinContext<IGroupService>(CreateGroupService);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -37,6 +36,11 @@ namespace SocialNetworkMvc.App_Start
         }
 
 
-       
+        private IGroupService CreateGroupService()
+        {
+            return serviceCreator.CreateGroupService("DefaultConnection");
+        }
+
+
     }
 }

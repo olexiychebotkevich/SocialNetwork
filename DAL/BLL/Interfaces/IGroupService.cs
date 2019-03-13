@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    public interface IGroupService
+    public interface IGroupService:IDisposable
     {
         OperationDetails Create(GroupDTO grouprDto);
 

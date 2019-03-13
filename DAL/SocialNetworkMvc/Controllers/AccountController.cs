@@ -21,7 +21,7 @@ namespace SocialNetworkMvc.Controllers
             get
             {
                 return HttpContext.GetOwinContext().GetUserManager<IUserService>();
-                
+
             }
         }
 

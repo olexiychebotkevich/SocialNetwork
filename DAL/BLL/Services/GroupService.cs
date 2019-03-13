@@ -157,5 +157,9 @@ namespace BLL.Services
            
         }
 
-     }
+        public void Dispose()
+        {
+            Database.Dispose();
+        }
+    }
 }

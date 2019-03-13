@@ -19,6 +19,8 @@ namespace DAL.Repositories
 
         public void Create(Group item)
         {
+
+            //item.Id =7;
             Database.Groups.Add(item);
             Database.SaveChanges();
         }
