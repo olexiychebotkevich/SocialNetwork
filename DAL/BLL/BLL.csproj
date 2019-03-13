@@ -55,12 +55,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTO\GroupDTO.cs" />
+    <Compile Include="DTO\PostDTO.cs" />
     <Compile Include="DTO\SmallUserDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
+    <Compile Include="Interfaces\IGroupService.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GroupService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

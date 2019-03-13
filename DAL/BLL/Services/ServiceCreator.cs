@@ -14,5 +14,11 @@ namespace BLL.Services
         {
             return new UserService(new IdentityUnitOfWork(connection));
         }
+
+
+        public IGroupService CreateGroupService(string connection)
+        {
+            return new GroupService(new IdentityUnitOfWork(connection));
+        }
     }
 }

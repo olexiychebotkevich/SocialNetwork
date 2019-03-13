@@ -6,39 +6,52 @@
 {
     <li class="list-inline-item">
 
-        @Html.ActionLink("Hello "+user +" !",
-                         "Index",
-                         "ManageProfile",
-                         routeValues: null,
-                         htmlAttributes: new { @class= "btn btn-outline-success",
-                                               title ="Edite profile" })
+        @Html.ActionLink("Hello " + user + " !",
+                          "Index",
+                          "ManageProfile",
+                          routeValues: null,
+                          htmlAttributes: new
+                          {
+                              @class = "btn btn-outline-success",
+                              title = "Edite profile"
+                          })
     </li>
     <li class="list-inline-item">
         @Html.ActionLink("Log Out",
-                         "Logout",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new { @class = "btn btn-outline-success",
-                                               title = "Logout" })
+                          "Logout",
+                          "Account",
+                          routeValues: null,
+                          htmlAttributes: new
+                          {
+                              @class = "btn btn-outline-success",
+                              title = "Logout"
+                          })
     </li>
 }
 else
 {
     <li class="list-inline-item">
         @Html.ActionLink("Sign Up",
-                         "Register",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new { @class= "btn btn-outline-danger",
-                                               title ="Register new user" })
+                          "Register",
+                          "Account",
+                          routeValues: null,
+                          htmlAttributes: new
+                          {
+                              @class = "btn btn-outline-danger",
+                              title = "Register new user"
+                          })
     </li>
     <li class="list-inline-item">
         @Html.ActionLink("Sign In",
-                         "Login",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new { @class = "btn btn-outline-danger",
-                                               title = "Login with existing account" })
+                          "Login",
+                          "Account",
+                          routeValues: null,
+                          htmlAttributes: new
+                          {
+                              @class = "btn btn-outline-danger",
+                              title = "Login with existing account"
+                          })
     </li>
+}
 
 

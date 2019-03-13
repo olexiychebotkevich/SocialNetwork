@@ -14,5 +14,9 @@ namespace DAL.EF
         public ApplicationContext(string conectionString) : base(conectionString) { }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }

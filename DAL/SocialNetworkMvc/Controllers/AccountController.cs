@@ -21,6 +21,7 @@ namespace SocialNetworkMvc.Controllers
             get
             {
                 return HttpContext.GetOwinContext().GetUserManager<IUserService>();
+                
             }
         }
 
@@ -85,8 +86,7 @@ namespace SocialNetworkMvc.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    Address = model.Address,
-                    Name = model.Name,
+                    UserName = model.Name,
                     Role = "user"
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
@@ -105,7 +105,8 @@ namespace SocialNetworkMvc.Controllers
                 UserName = "somemail@mail.ru",
                 Password = "ad46D_ewr3",
                 Name = "Семен Семенович Горбунков",
-                Address = "ул. Спортивная, д.30, кв.75",
+                City = "New-Yourk",
+                Country = "New-Yourk",
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }
@@ -116,10 +117,10 @@ namespace SocialNetworkMvc.Controllers
         {
             var smalluser = UserService.GetUser(User.Identity.Name);
             if(smalluser==null)
-            return PartialView("_PartialLoginView", null);
+            return PartialView("PartialLoginView", null);
             else
-                return PartialView("_PartialLoginView",
-                    new SmallUserModel { Name = smalluser.Result.Name, Email = smalluser.Result.Email });
+                return PartialView("PartialLoginView",
+                    new SmallUserModel { Name = smalluser.Name, Email = smalluser.Email });
         }
     }
 }

@@ -18,7 +18,12 @@ namespace SocialNetworkMvc.App_Start
         IServiceCreator serviceCreator = new ServiceCreator();
         public void Configuration(IAppBuilder app)
         {
+            
             app.CreatePerOwinContext<IUserService>(CreateUserService);
+
+            
+
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
@@ -30,5 +35,8 @@ namespace SocialNetworkMvc.App_Start
         {
             return serviceCreator.CreateUserService("DefaultConnection");
         }
+
+
+       
     }
 }

@@ -19,6 +19,8 @@ namespace DAL.Repositories
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
         private IClientManager clientManager;
+        private IPostManager postManager;
+        private IGroupManager groupManager;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -26,6 +28,8 @@ namespace DAL.Repositories
             userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(db));
             clientManager = new ClientManager(db);
+            postManager = new PostManager(db);
+            groupManager = new GroupManager(db);
         }
 
         public ApplicationUserManager UserManager
@@ -38,10 +42,24 @@ namespace DAL.Repositories
             get { return clientManager; }
         }
 
+
+        public IPostManager PostManager
+        {
+            get { return postManager; }
+        }
+
+
+        public IGroupManager GroupManager
+        {
+            get { return groupManager; }
+        }
+
         public ApplicationRoleManager RoleManager
         {
             get { return roleManager; }
         }
+
+       
 
         public async Task SaveAsync()
         {
@@ -64,6 +82,8 @@ namespace DAL.Repositories
                     userManager.Dispose();
                     roleManager.Dispose();
                     clientManager.Dispose();
+                    postManager.Dispose();
+                    groupManager.Dispose();
                 }
                 this.disposed = true;
             }
