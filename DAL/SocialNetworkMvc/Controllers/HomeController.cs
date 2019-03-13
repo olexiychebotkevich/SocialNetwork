@@ -13,16 +13,40 @@ namespace SocialNetworkMvc.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Friends()
         {
-            ViewBag.Message = "Your application description page.";
+           
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult People()
         {
-            ViewBag.Message = "Your contact page.";
+           
+
+            return View();
+        }
+        public ActionResult MyPage()
+        {
+
+
+            return View();
+        }
+        public ActionResult Groups()
+        {
+
+
+            return View();
+        }
+        public ActionResult MyGroups()
+        {
+
+
+            return View();
+        }
+        public ActionResult Group()
+        {
+
 
             return View();
         }

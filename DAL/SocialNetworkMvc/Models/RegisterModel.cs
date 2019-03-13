@@ -18,8 +18,17 @@ namespace SocialNetworkMvc.Models
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string Country { get; set; }
+        [Required]
+        public string City { get; set; }
         [Required]
         public string Name { get; set; }
+        
+       [Required]
+        [Range(12, 60, ErrorMessage = "Age should be [12 and 60]")]
+        public int Age { get; set; }
+
+
+
     }
 }

@@ -1,31 +1,82 @@
-﻿@{
+﻿@model SocialNetworkMvc.Models.LoginModel
+@{
     ViewBag.Title = "Home Page";
 }
+<link href="/Content/Custom.css" rel="stylesheet" type="text/css" />
+<body class="bg-dark" style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
+   
+   
+    <div class="container py-5 ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card rounded-0" style="background-color:sandybrown">
+                            <div class="card-header">
+                                <h3 class="mb-0" style="font-size:40px;font-family:Algerian">Log in</h3>
+                            </div>
+                            <div class="card-body ">
+                                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
+                                        <div>
+                                            @Html.ValidationSummary()
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.DisplayNameFor(m => m.Email)<br>
+                                                @Html.EditorFor(m => m.Email)
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                                            </div>     
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.DisplayNameFor(m => m.Password)<br>
+                                                @Html.EditorFor(m => m.Password)
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                    <div id="menuBall2" class="menuBall" style="margin-right:5px">
+                                        <a href="#" class="ball redball">
+                                            <div class="menuText">
+                                                Log in
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div id="menuBall2" class="menuBall">
+                                        <a href="/Account/Registration" class="ball redball">
+                                            <div class="menuText">
+                                                Register
+                                                @*@Html.Action( "Account", "Registration")*@
+                                            </div>
+                                        </a>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</body>
+@*@section scripts{
+    <script>
+        $.ajax({
+            url: '/Account/Registration',
+            type: 'GET',
+            success: function (html) {
+                alert(html);
+            },
+            error: function (error) {
+                $(that).remove();
+                DisplayError(error.statusText);
+            }
+        });
+        </script>
+    }*@
+
