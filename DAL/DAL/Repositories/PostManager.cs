@@ -28,5 +28,10 @@ namespace DAL.Repositories
         {
             Database.Dispose();
         }
+
+        public List<Post> GetAllPosts()
+        {
+            return Database.Posts.ToList();
+        }
     }
 }

@@ -20,5 +20,11 @@ namespace BLL.Services
         {
             return new GroupService(new IdentityUnitOfWork(connection));
         }
+
+
+        public IPostService CreatePostService(string connection)
+        {
+            return new PostService(new IdentityUnitOfWork(connection));
+        }
     }
 }

@@ -11,6 +11,10 @@ namespace DAL.Interfaces
     {
         void Create(Post item);
 
+        List<Post> GetAllPosts();
+
+       
+
 
     }
 }

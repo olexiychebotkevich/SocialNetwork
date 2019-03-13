@@ -11,6 +11,9 @@ namespace BLL.Interfaces
         IUserService CreateUserService(string connection);
 
         IGroupService CreateGroupService(string connection);
+
+        IPostService CreatePostService(string connection);
+
     }
 
    

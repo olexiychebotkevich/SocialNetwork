@@ -23,6 +23,9 @@ namespace SocialNetworkMvc.App_Start
 
             app.CreatePerOwinContext<IGroupService>(CreateGroupService);
 
+
+            app.CreatePerOwinContext<IPostService>(CreatePostService);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
@@ -39,6 +42,12 @@ namespace SocialNetworkMvc.App_Start
         private IGroupService CreateGroupService()
         {
             return serviceCreator.CreateGroupService("DefaultConnection");
+        }
+
+
+        private IPostService CreatePostService()
+        {
+            return serviceCreator.CreatePostService("DefaultConnection");
         }
 
 

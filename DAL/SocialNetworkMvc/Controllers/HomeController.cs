@@ -24,7 +24,18 @@ namespace SocialNetworkMvc.Controllers
         }
 
 
-       
+
+        private IPostService PostService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IPostService>();
+
+            }
+        }
+
+
+
 
         public ActionResult Index()
         {
@@ -55,6 +66,20 @@ namespace SocialNetworkMvc.Controllers
             GroupService.Create(group);
 
             ViewBag.Message = "Group Added";
+
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public ActionResult AddPost()
+        {
+            PostDTO postDTO = new PostDTO { Author = "Vasyan", Subject = "Fun", Date = DateTime.Now, Text = "New Vasysan post" };
+
+            PostService.Create(postDTO);
+
+            ViewBag.Message = "Post Added";
 
             return View();
         }
