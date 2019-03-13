@@ -110,5 +110,6 @@ namespace SocialNetworkMvc.Controllers
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }
+     
     }
 }
