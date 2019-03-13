@@ -172,9 +172,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\GroupsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MyGroupsModel.cs" />
+    <Compile Include="Models\MyPageModel.cs" />
+    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\SmallUserModel.cs" />
+    <Compile Include="Models\FriendModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +190,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -215,6 +222,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -239,12 +248,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Friends.cshtml" />
+    <Content Include="Views\Home\People.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Registration.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Shared\PartialLoginView.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -254,8 +261,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\AddGroup.cshtml" />
-    <Content Include="Views\Home\AddPost.cshtml" />
+    <Content Include="Views\Shared\_PartialViewFriend.cshtml" />
+    <Content Include="Views\Shared\_PartialViewUser.cshtml" />
+    <Content Include="Views\Home\MyPage.cshtml" />
+    <Content Include="Views\Shared\_PartialViewPost.cshtml" />
+    <Content Include="Views\Shared\_PartialViewGroups.cshtml" />
+    <Content Include="Views\Home\Groups.cshtml" />
+    <Content Include="Views\Home\MyGroups.cshtml" />
+    <Content Include="Views\Shared\_PartialViewMyGroups.cshtml" />
+    <Content Include="Views\Home\Group.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
