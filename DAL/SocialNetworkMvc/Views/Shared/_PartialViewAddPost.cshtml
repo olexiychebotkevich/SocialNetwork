@@ -1,0 +1,30 @@
+﻿@model SocialNetworkMvc.Models.PostModel
+@{
+    ViewBag.Title = "_PartialViewAddPost";
+}
+<div style="margin-left:200px;margin-right:200px">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="margin-top:10px;margin-bottom:10px;height:150px" />
+            </div>
+            <div class="col-sm" style="font-family:'MV Boli';font-size:25px; margin-top:10px">
+               
+
+                @Html.LabelFor(x => Model.Subject)
+                @Html.EditorFor(x => Model.Subject)<br />
+
+                @Html.LabelFor(x => Model.Text)
+                @Html.EditorFor(x => Model.Text)
+            </div>
+
+        </div>
+        <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
+            @Html.ActionLink("Add post", "Contact", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+
+        </div>
+    </div>
+</div>
+
+
