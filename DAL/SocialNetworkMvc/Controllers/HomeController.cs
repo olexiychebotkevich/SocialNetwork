@@ -98,7 +98,7 @@ namespace SocialNetworkMvc.Controllers
 
 
         [HttpGet]
-        public  ActionResult AddGroup()
+        public  ActionResult AddGroup_()
         {
             GroupDTO group = new GroupDTO { Name = $"New Group {DateTime.Now.Second} ", Description = "Best group from all groups in world" };
 
@@ -112,7 +112,7 @@ namespace SocialNetworkMvc.Controllers
 
 
         [HttpGet]
-        public ActionResult AddPost()
+        public ActionResult AddPost_()
         {
             PostDTO postDTO = new PostDTO { Author = "Vasyan", Subject = "Fun", Date = DateTime.Now, Text = "New Vasysan post" };
 
