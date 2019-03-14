@@ -82,13 +82,38 @@ namespace BLL.Services
             Database.Dispose();
         }
 
-        public SmallUserDTO GetUser(string Email)
+        public UserDTO GetUser(string Email)
         {
-            SmallUserDTO smallUserDTO = null;
+            UserDTO smallUserDTO = null;
             ApplicationUser user = Database.UserManager.FindByEmail(Email);
             if(user!=null)
-            smallUserDTO = new SmallUserDTO { Name = user.UserName, Email = user.Email };
+            smallUserDTO = new UserDTO { Name = user.UserName, Email = user.Email};
             return smallUserDTO;
+        }
+
+        public List<UserDTO> GetAllUsers()
+        {
+           
+            List<UserDTO> userDTOs=null;
+           
+           
+
+            foreach(var i in Database.ClientManager.GetUsers())
+            {
+
+                userDTOs.Add(
+                    new UserDTO
+                    {
+                        Name = i.Name,
+                        Age = i.Age,
+                        City = i.City,
+                        Country = i.Country,
+                        Email = i.Email,
+                    });
+            }
+
+            return userDTOs;
+            
         }
     }
 }

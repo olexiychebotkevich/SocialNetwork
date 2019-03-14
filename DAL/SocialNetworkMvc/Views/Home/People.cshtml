@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SocialNetworkMvc.Models.UserModel>
+@{
     ViewBag.Title = "People";
 }
 <body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
@@ -14,11 +15,17 @@
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign out</button>
             </form>
         
-        <ul class="list-inline ">
+            <ul class="list-inline ">
+                @foreach (var item in Model)
+                {
+                    @Html.Partial("_PartialViewUser",item)
+                }
 
-            @Html.Partial("_PartialViewUser")
 
-        </ul>
+
+
+
+            </ul>
     </div>
 
 </body>

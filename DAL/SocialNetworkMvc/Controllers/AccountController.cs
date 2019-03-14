@@ -58,11 +58,13 @@ namespace SocialNetworkMvc.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MyPage", "Home");
                 }
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
+
+
 
         public ActionResult Logout()
         {

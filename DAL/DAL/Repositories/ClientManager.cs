@@ -23,9 +23,17 @@ namespace DAL.Repositories
             Database.SaveChanges();
         }
 
+
+        public List<ClientProfile>GetUsers()
+        {
+            return Database.ClientProfiles.ToList();
+        }
+
         public void Dispose()
         {
             Database.Dispose();
         }
+
+       
     }
 }

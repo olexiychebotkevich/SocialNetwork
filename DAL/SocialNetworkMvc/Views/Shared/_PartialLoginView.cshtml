@@ -1,70 +1,75 @@
 ﻿@model SocialNetworkMvc.Models.UserModel
 @{
 
-    var user = Model != null ? Model.Name +" "+ Model.City : "User";
+    var user = Model != null ? Model.Name + " " + Model.City : "User";
 }
 @if (User.Identity.IsAuthenticated)
 {
+<nav class="navbar navbar-expand-lg " style="background-color:sandybrown">
+    <ul>
+        <li class="nav-item">
+            @Html.ActionLink("My Page", "MyPage", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Friends", "Friends", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("People", "People", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("My Groups", "MyGroups", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Groups", "Groups", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        </li>
+    </ul>
 
-<ul>
-    <li class="nav-item">
-        @Html.ActionLink("My Page", "MyPage", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("Friends", "Friends", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("People", "People", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("My Groups", "MyGroups", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("Groups", "Groups", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-    </li>
-</ul>
 
-<ul>
-    <li class="list-inline-item">
 
-        @Html.ActionLink(user +"!",
-                         "Index",
-                         "ManageProfile",
-                         routeValues: null,
-                         htmlAttributes: new {
-                             @class = "btn btn-outline-dark my-2 my-sm-0",
-                             title ="Edite profile" })
-    </li>
-    <li class="list-inline-item">
-        @Html.ActionLink("Log Out",
-                         "Logout",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new { @class="btn btn-outline-dark my-2 my-sm-0",
-                                               title = "Logout" })
-    </li>
-</ul>
-}
-else
-{
-<ul>
-    <li class="list-inline-item">
-        @Html.ActionLink("Sign Up",
-                         "Register",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new {
-                             @class = "btn btn-outline-dark my-2 my-sm-0",
-                             title ="Register new user" })
-    </li>
-    <li class="list-inline-item">
-        @Html.ActionLink("Sign In",
-                         "LoginModel",
-                         "Account",
-                         routeValues: null,
-                         htmlAttributes: new {
-                             @class = "btn btn-outline-dark my-2 my-sm-0",
-                             title = "Login with existing account" })
-    </li>
-</ul>
-}
+    <ul>
+        <li class="list-inline-item">
+
+            @Html.ActionLink(user +"!",
+                             "Index",
+                             "ManageProfile",
+                             routeValues: null,
+                             htmlAttributes: new {
+                                 @class = "btn btn-outline-dark my-2 my-sm-0",
+                                 title ="Edite profile" })
+        </li>
+        <li class="list-inline-item">
+            @Html.ActionLink("Log Out",
+                             "Logout",
+                             "Account",
+                             routeValues: null,
+                             htmlAttributes: new { @class="btn btn-outline-dark my-2 my-sm-0",
+                                                   title = "Logout" })
+        </li>
+    </ul>
+
+
+</nav>
+        }
+        else
+        {
+        <ul>
+            <li class="list-inline-item">
+                @Html.ActionLink("Sign Up",
+                                 "Register",
+                                 "Account",
+                                 routeValues: null,
+                                 htmlAttributes: new {
+                                     @class = "btn btn-outline-dark my-2 my-sm-0",
+                                     title ="Register new user" })
+            </li>
+            <li class="list-inline-item">
+                @Html.ActionLink("Sign In",
+                                 "LoginModel",
+                                 "Account",
+                                 routeValues: null,
+                                 htmlAttributes: new {
+                                     @class = "btn btn-outline-dark my-2 my-sm-0",
+                                     title = "Login with existing account" })
+            </li>
+        </ul>
+        }

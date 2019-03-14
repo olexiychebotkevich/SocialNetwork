@@ -2,6 +2,7 @@
 using BLL.Interfaces;
 using BLL.Services;
 using Microsoft.AspNet.Identity.Owin;
+using SocialNetworkMvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,15 +67,35 @@ namespace SocialNetworkMvc.Controllers
 
         public ActionResult People()
         {
-           
 
-            return View();
+            List<UserDTO> userDTOs = UserService.GetAllUsers();
+            List<UserModel> userModels=null;
+            foreach(var i in userDTOs)
+            {
+                userModels.Add(new UserModel
+                {
+                    Name = i.Name,
+                    City = i.City,
+                    Country = i.Country
+                });
+            }
+            return View(userModels);
         }
+
+
         [HttpGet]
         public ActionResult MyPage()
         {
-            
 
+            UserDTO user = UserService.GetUser(User.Identity.Name);
+            MyPageModel myPageModel = new MyPageModel
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Age=user.Age,
+                City=user.City,
+                Country=user.Country
+            };
                 return View();
         }
         public ActionResult Groups()

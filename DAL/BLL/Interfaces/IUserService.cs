@@ -16,7 +16,9 @@ namespace BLL.Interfaces
 
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
 
-        SmallUserDTO GetUser(string Email);
+        UserDTO GetUser(string Email);
+
+        List<UserDTO> GetAllUsers();
 
         Task SetInitialData(UserDTO adminDto, List<string> roles);
     }
