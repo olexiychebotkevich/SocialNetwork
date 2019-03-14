@@ -1,6 +1,6 @@
 ﻿@model SocialNetworkMvc.Models.GroupModel
 @{
-    ViewBag.Title = "_PartialViewAddGroups";
+    ViewBag.Title = "_PartialViewAddGroup";
 }
 <div style="margin-left:200px;margin-right:200px">
 
@@ -22,7 +22,7 @@
 
         </div>
         <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
-            @Html.ActionLink("Add group", "Contact", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+            @Html.ActionLink("Add group", "AddGroup_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
 
         </div>
     </div>

@@ -3,43 +3,46 @@
     ViewBag.Title = "MyPage";
 }
 <body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
-<div>
-    <div class="container">
-        <div class="row" style="margin-top:10px;margin-bottom:10px;">
-            <div class="col-sm">
-                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:200px" />
-            </div>
-            <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
-                <h3 style="font-size:25px;"> Basic info</h3>
-
-               
-                @Html.ValueFor(x => Model.Name)<br />
-
-               
-                @Html.ValueFor(x => Model.Email)<br />
-
-               
-                @Html.ValueFor(x => Model.City)<br />
-
-                
-                @Html.ValueFor(x => Model.Age)<br />
+    <div>
+        <div class="container">
+            <div class="row" style="margin-top:10px;margin-bottom:10px;">
+                <div class="col-sm">
+                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:200px" />
+                </div>
+                <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
+                    <h3 style="font-size:25px;"> Basic info</h3>
 
 
+                    @Html.ValueFor(x => Model.Name)<br />
 
-            </div>
 
-        </div>
-    </div>
-    <div class="container" style="margin-top:20px">
-        <div class="row" >
-            <div class="col-sm">
+                    @Html.ValueFor(x => Model.Email)<br />
 
-                @Html.Partial("_PartialViewPost")
 
+                    @Html.ValueFor(x => Model.City)<br />
+
+
+                    @Html.ValueFor(x => Model.Age)<br />
+
+
+
+                </div>
 
             </div>
         </div>
+        <div class="container" style="margin-top:20px">
+            <div class="row">
+                <div class="col-sm">
 
-    </div>
+                    @Html.Partial("_PartialViewPost")
+
+
+                </div>
+            </div>
+
+        </div>
+        @Html.ActionLink("AddPost", "AddPost_", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        @Html.ActionLink("AddGroup", "AddGroup_", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+
     </div>
     </body>
