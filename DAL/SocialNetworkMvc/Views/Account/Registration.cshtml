@@ -17,63 +17,62 @@
                             </div>
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
-                                         <div>
-                                        @Html.ValidationSummary()
+                                        <div>
+                                            @Html.ValidationSummary()
 
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.Name)<br>
-                                            @Html.EditorFor(x => x.Name)
-                                            @Html.ValidationMessageFor(x => x.Name)
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.LabelFor(x => x.Name)<br>
+                                                @Html.EditorFor(x => x.Name)
+                                                @Html.ValidationMessageFor(x => x.Name)
+
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian; ">
+                                                @Html.LabelFor(x => x.Country)<br>
+                                                @Html.EditorFor(x => x.Country)
+                                                @Html.ValidationMessageFor(x => x.Country)
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.LabelFor(x => x.City)<br>
+                                                @Html.EditorFor(x => x.City)
+                                                @Html.ValidationMessageFor(x => x.City)
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.LabelFor(x => x.Age)<br>
+                                                @Html.EditorFor(x => x.Age)
+                                                @Html.ValidationMessageFor(x => x.Age)
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.LabelFor(x => x.Email)<br>
+                                                @Html.EditorFor(x => x.Email)
+                                                @Html.ValidationMessageFor(x => x.Email)
+
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+
+                                                @Html.LabelFor(x => x.Password)<br>
+                                                @Html.PasswordFor(x => x.Password)
+                                                @Html.ValidationMessageFor(x => x.Password)
+                                            </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+                                                @Html.LabelFor(x => x.ConfirmPassword)<br>
+                                                @Html.PasswordFor(x => x.ConfirmPassword)
+                                                @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                                            </div>
+
 
                                         </div>
-                                        <div class="form-group" style="font-family:Algerian; ">
-                                            @Html.LabelFor(x => x.Country)<br>
-                                            @Html.EditorFor(x => x.Country)
-                                            @Html.ValidationMessageFor(x => x.Country)
-                                        </div>
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.City)<br>
-                                            @Html.EditorFor(x => x.City)
-                                            @Html.ValidationMessageFor(x => x.City)
-                                        </div>
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.Age)<br>
-                                            @Html.EditorFor(x => x.Age)
-                                            @Html.ValidationMessageFor(x => x.Age)
-                                        </div>
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.Email)<br>
-                                            @Html.EditorFor(x => x.Email)
-                                            @Html.ValidationMessageFor(x => x.Email)
 
-                                        </div>
-                                        <div class="form-group" style="font-family:Algerian;">
 
-                                            @Html.LabelFor(x => x.Password)<br>
-                                            @Html.PasswordFor(x => x.Password)
-                                            @Html.ValidationMessageFor(x => x.Password)
-                                        </div>
-                                        <div class="form-group" style="font-family:Algerian;">
-                                            @Html.LabelFor(x => x.ConfirmPassword)<br>
-                                            @Html.PasswordFor(x => x.ConfirmPassword)
-                                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
-                                        </div>
-                                        
-                                       
-                                        </div>
+                                        <input value="Register" type="submit"  />
                                     }
 
-                                    <div id="menuBall2" class="menuBall">
-                                        <a href="" class="ball redball">
-                                            <div class="menuText">
-                                                Register
-                                            </div>
-                                        </a>
-                                    </div>
+
+
+
                                 </form>
 
                             </div>

@@ -270,6 +270,7 @@
     <Content Include="Views\Home\MyGroups.cshtml" />
     <Content Include="Views\Shared\_PartialViewMyGroups.cshtml" />
     <Content Include="Views\Home\Group.cshtml" />
+    <Content Include="Views\Shared\_PartialLoginView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

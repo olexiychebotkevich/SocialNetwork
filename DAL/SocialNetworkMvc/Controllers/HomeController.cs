@@ -36,10 +36,24 @@ namespace SocialNetworkMvc.Controllers
 
 
 
+        private IUserService UserService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
 
+            }
+        }
+
+
+
+        [HttpGet]
         public ActionResult Index()
         {
-           
+
+            var user = UserService.GetUser(User.Identity.Name);
+            if (user != null)
+                return RedirectToAction("MyPage", "Home");
             return View();
         }
 
@@ -56,11 +70,12 @@ namespace SocialNetworkMvc.Controllers
 
             return View();
         }
+        [HttpGet]
         public ActionResult MyPage()
         {
+            
 
-
-            return View();
+                return View();
         }
         public ActionResult Groups()
         {

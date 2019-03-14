@@ -33,14 +33,14 @@ namespace SocialNetworkMvc.Controllers
             }
         }
 
-        public ActionResult Login()
+        public ActionResult LoginModel()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model)
+        public async Task<ActionResult> LoginModel(LoginModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -87,13 +87,18 @@ namespace SocialNetworkMvc.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     UserName = model.Name,
+                    Age=model.Age,
+                    City=model.City,
+                    Country=model.Country,
+                    Name=model.Name,
                     Role = "user"
                 };
-                OperationDetails operationDetails = await UserService.Create(userDto);
-                if (operationDetails.Succedeed)
-                    return RedirectToAction("Index","Home");
-                else
-                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+                /* OperationDetails operationDetails =*/
+                await UserService.Create(userDto);
+                //if (operationDetails.Succedeed)
+                //    return RedirectToAction("Index","Home");
+                //else
+                //    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
             return RedirectToAction("Index","Home");
         }
@@ -117,10 +122,10 @@ namespace SocialNetworkMvc.Controllers
         {
             var smalluser = UserService.GetUser(User.Identity.Name);
             if(smalluser==null)
-            return PartialView("PartialLoginView", null);
+            return PartialView("_PartialLoginView", null);
             else
-                return PartialView("PartialLoginView",
-                    new SmallUserModel { Name = smalluser.Name, Email = smalluser.Email });
+                return PartialView("_PartialLoginView",
+                    new UserModel { Name = smalluser.Name});
         }
     }
 }

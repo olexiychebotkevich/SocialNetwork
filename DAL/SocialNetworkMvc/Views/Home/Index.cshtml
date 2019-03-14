@@ -3,10 +3,14 @@
     ViewBag.Title = "Home Page";
 }
 <link href="/Content/Custom.css" rel="stylesheet" type="text/css" />
-<body class="bg-dark" style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
-   
-   
-    <div class="container py-5 ">
+@*@if (Model!=null)
+{
+    Response.Redirect(Url.Action("MyPage","Home"));
+}*@
+
+<body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
+
+    <div class="container py-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -15,43 +19,48 @@
                             <div class="card-header">
                                 <h3 class="mb-0" style="font-size:40px;font-family:Algerian">Log in</h3>
                             </div>
-                            <div class="card-body ">
+                            <div class="card-body">
                                 <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("LoginModel", "Account", FormMethod.Post))
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
                                         <div>
                                             @Html.ValidationSummary()
 
-                                            <div class="form-group" style="font-family:Algerian;">
-                                                @Html.DisplayNameFor(m => m.Email)<br>
-                                                @Html.EditorFor(m => m.Email)
 
-                                            </div>     
                                             <div class="form-group" style="font-family:Algerian;">
-                                                @Html.DisplayNameFor(m => m.Password)<br>
-                                                @Html.EditorFor(m => m.Password)
+                                                @Html.LabelFor(x => x.Email)<br>
+                                                @Html.EditorFor(x => x.Email)
+                                                @Html.ValidationMessageFor(x => x.Email)
 
                                             </div>
+                                            <div class="form-group" style="font-family:Algerian;">
+
+                                                @Html.LabelFor(x => x.Password)<br>
+                                                @Html.PasswordFor(x => x.Password)
+                                                @Html.ValidationMessageFor(x => x.Password)
+                                            </div>
+
+
+
                                         </div>
+
+
+                                        <input value="Login" type="submit" class="btn btn-outline-dark my-2 my-sm-0" />
+
+                                        @Html.ActionLink("Registration",
+                                        "Registration",
+                                        "Account",
+                                        routeValues: null,
+                                        htmlAttributes: new {
+                                        @class = "btn btn-outline-dark my-2 my-sm-0",
+                                        title ="Register new user" })
                                     }
 
-                                    <div id="menuBall2" class="menuBall" style="margin-right:5px">
-                                        <a href="#" class="ball redball">
-                                            <div class="menuText">
-                                                Log in
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="menuBall2" class="menuBall">
-                                        <a href="/Account/Registration" class="ball redball">
-                                            <div class="menuText">
-                                                Register
-                                                @*@Html.Action( "Account", "Registration")*@
-                                            </div>
-                                        </a>
-                                    </div>
+
+
+
                                 </form>
 
                             </div>
@@ -62,21 +71,5 @@
             </div>
         </div>
     </div>
-
 </body>
-@*@section scripts{
-    <script>
-        $.ajax({
-            url: '/Account/Registration',
-            type: 'GET',
-            success: function (html) {
-                alert(html);
-            },
-            error: function (error) {
-                $(that).remove();
-                DisplayError(error.statusText);
-            }
-        });
-        </script>
-    }*@
 
