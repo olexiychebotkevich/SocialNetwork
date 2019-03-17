@@ -59,7 +59,7 @@ namespace BLL.Services
                     subscribers.Add(new UserDTO
                     {
                         Age = s.Age,
-                        City = s.City,
+                        
                         Country = s.Country,
                         Email = s.Email,
                         UserName = s.Name
@@ -115,7 +115,7 @@ namespace BLL.Services
                     subscribers.Add(new UserDTO
                     {
                         Age = s.Age,
-                        City = s.City,
+                       
                         Country = s.Country,
                         Email = s.Email,
                         UserName = s.Name

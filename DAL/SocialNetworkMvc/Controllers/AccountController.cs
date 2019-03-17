@@ -3,10 +3,13 @@ using BLL.Infrastructure;
 using BLL.Interfaces;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 using SocialNetworkMvc.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,6 +19,13 @@ namespace SocialNetworkMvc.Controllers
 {
     public class AccountController : Controller
     {
+
+        class Data
+        {
+            public string name { get; set; }
+            public string code { get; set; }
+        }
+
         private IUserService UserService
         {
             get
@@ -50,6 +60,7 @@ namespace SocialNetworkMvc.Controllers
                 if (claim == null)
                 {
                     ModelState.AddModelError("", "Неверный логин или пароль.");
+
                 }
                 else
                 {
@@ -61,7 +72,8 @@ namespace SocialNetworkMvc.Controllers
                     return RedirectToAction("MyPage", "Home");
                 }
             }
-            return RedirectToAction("Index", "Home");
+
+            return View();
         }
 
 
@@ -74,12 +86,29 @@ namespace SocialNetworkMvc.Controllers
 
         public ActionResult Registration()
         {
-            return View(new RegisterModel());
+           
+            string json;
+
+            List<string> items=new List<string>();
+
+            using (WebClient client = new WebClient())
+            {
+                json = client.DownloadString("https://gist.githubusercontent.com/keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/countries.json");
+            }
+
+            foreach(var i in JsonConvert.DeserializeObject< List < Data >> (json))
+            {
+                items.Add(i.name.ToString());
+            }
+           
+            SelectList countries = new SelectList(items);
+
+            return View(new RegisterModel { Country=countries});
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Registration(RegisterModel model)
+        public async Task<ActionResult> Registration(RegisterModelPost model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -89,20 +118,22 @@ namespace SocialNetworkMvc.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     UserName = model.Name,
-                    Age=model.Age,
-                    City=model.City,
-                    Country=model.Country,
-                    Name=model.Name,
+                    Age = model.Age,
+                    Country = model.Country,
+                    Name = model.Email,
                     Role = "user"
                 };
                 /* OperationDetails operationDetails =*/
                 await UserService.Create(userDto);
-                //if (operationDetails.Succedeed)
-                //    return RedirectToAction("Index","Home");
+                //if (OperationDetails.Succedeed)
+                //    return RedirectToAction("Index", "Home");
                 //else
                 //    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index","Home");
+            else
+                return View();
+            
         }
         private async Task SetInitialDataAsync()
         {
@@ -112,8 +143,8 @@ namespace SocialNetworkMvc.Controllers
                 UserName = "somemail@mail.ru",
                 Password = "ad46D_ewr3",
                 Name = "Семен Семенович Горбунков",
-                City = "New-Yourk",
-                Country = "New-Yourk",
+               
+                Country = "USA",
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }

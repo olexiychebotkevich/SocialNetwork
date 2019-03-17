@@ -34,6 +34,31 @@ namespace DAL.Repositories
             Database.Dispose();
         }
 
-       
+        public ClientProfile GetUserByEmail(string Email)
+        {
+            ClientProfile user;
+            try
+            {
+                user = Database.ClientProfiles.Single(x => x.Email == Email);
+            }
+            catch
+            {
+                user = null;
+            }
+            return user;
+
+        }
+
+        public void UpdateInformationAboutUser(ClientProfile user)
+        {
+            ClientProfile clientProfile = Database.ClientProfiles.Single(x => x.Email == user.Email);
+            clientProfile.Name = user.Name;
+            clientProfile.Email = user.Email;
+            clientProfile.Country = user.Country;
+            clientProfile.Profilephoto = user.Profilephoto;
+            Database.Entry(clientProfile).State = System.Data.Entity.EntityState.Modified;
+            Database.SaveChanges();
+
+        }
     }
 }

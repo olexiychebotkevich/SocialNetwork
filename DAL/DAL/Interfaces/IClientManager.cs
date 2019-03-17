@@ -13,6 +13,10 @@ namespace DAL.Interfaces
 
         List<ClientProfile> GetUsers();
 
+        ClientProfile GetUserByEmail(string Email);
+
+        void UpdateInformationAboutUser(ClientProfile user);
+
         
     }
 }

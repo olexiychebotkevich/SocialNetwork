@@ -15,7 +15,6 @@ namespace DAL.Entities
 
         public string Email { get; set; }
 
-        public string City { get; set; }
 
         public string Country { get; set; }
 

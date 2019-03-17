@@ -1,7 +1,9 @@
 ﻿@model SocialNetworkMvc.Models.RegisterModel
 @{
     ViewBag.Title = "Registration";
+    var list = Model.Country;
 }
+
 <link href="/Content/Custom.css" rel="stylesheet" type="text/css" />
 
 <body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
@@ -16,13 +18,13 @@
                                 <h3 class="mb-0" style="font-size:40px;font-family:Algerian">Registration</h3>
                             </div>
                             <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                
                                     @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
                                         <div>
-                                            @Html.ValidationSummary()
+                                            @*@Html.ValidationSummary()*@
 
                                             <div class="form-group" style="font-family:Algerian;">
                                                 @Html.LabelFor(x => x.Name)<br>
@@ -30,16 +32,12 @@
                                                 @Html.ValidationMessageFor(x => x.Name)
 
                                             </div>
-                                            <div class="form-group" style="font-family:Algerian; ">
-                                                @Html.LabelFor(x => x.Country)<br>
-                                                @Html.EditorFor(x => x.Country)
+                                            <div class="form-group"  style="font-family:Algerian; ">
+                                                @Html.Label("Countries")<br/>
+                                                @Html.DropDownListFor(x => x.Country, list, new { @class = "dropdown" })
                                                 @Html.ValidationMessageFor(x => x.Country)
                                             </div>
-                                            <div class="form-group" style="font-family:Algerian;">
-                                                @Html.LabelFor(x => x.City)<br>
-                                                @Html.EditorFor(x => x.City)
-                                                @Html.ValidationMessageFor(x => x.City)
-                                            </div>
+                                           
                                             <div class="form-group" style="font-family:Algerian;">
                                                 @Html.LabelFor(x => x.Age)<br>
                                                 @Html.EditorFor(x => x.Age)
@@ -74,7 +72,7 @@
 
 
 
-                                </form>
+                                
 
                             </div>
                         </div>

@@ -30,14 +30,14 @@ namespace BLL.Services
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
-                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
+                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.UserName};
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // добавляем роль
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                 // создаем профиль клиента
-                ClientProfile clientProfile = new ClientProfile { Id = user.Id, City = userDto.City, Name = userDto.Email,Age=userDto.Age,Country=userDto.Country,Email=userDto.Email };
+                ClientProfile clientProfile = new ClientProfile { Id = user.Id,  Name = userDto.UserName,Age=userDto.Age,Country=userDto.Country,Email=userDto.Email };
                 Database.ClientManager.Create(clientProfile);
                 await Database.SaveAsync();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
@@ -84,11 +84,11 @@ namespace BLL.Services
 
         public UserDTO GetUser(string Email)
         {
-            UserDTO smallUserDTO = null;
-            ApplicationUser user = Database.UserManager.FindByEmail(Email);
+            UserDTO UserDTO = null;
+            ClientProfile user = Database.ClientManager.GetUserByEmail(Email);
             if(user!=null)
-            smallUserDTO = new UserDTO { Name = user.UserName, Email = user.Email};
-            return smallUserDTO;
+            UserDTO = new UserDTO { Name = user.Name, Email = user.Email,Country=user.Country,Age=user.Age,UserName=user.Name,Profilephoto=user.Profilephoto};
+            return UserDTO;
         }
 
         public List<UserDTO> GetAllUsers()
@@ -106,7 +106,7 @@ namespace BLL.Services
                     {
                         Name = i.Name,
                         Age = i.Age,
-                        City = i.City,
+                       
                         Country = i.Country,
                         Email = i.Email,
                     });
@@ -114,6 +114,11 @@ namespace BLL.Services
 
             return userDTOs;
             
+        }
+
+        public void UpdateInformation(UserDTO user)
+        {
+            Database.ClientManager.UpdateInformationAboutUser(new ClientProfile { Name = user.Name, Age = user.Age, Country = user.Country, Profilephoto = user.Profilephoto, Email = user.Email });
         }
     }
 }

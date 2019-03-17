@@ -21,5 +21,7 @@ namespace BLL.Interfaces
         List<UserDTO> GetAllUsers();
 
         Task SetInitialData(UserDTO adminDto, List<string> roles);
+
+        void UpdateInformation(UserDTO user);
     }
 }

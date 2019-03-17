@@ -5,8 +5,8 @@
 }
 @if (User.Identity.IsAuthenticated)
 {
-<nav class="navbar navbar-expand-lg " style="background-color:sandybrown">
-    <ul>
+
+    <ul class="navbar-nav">
         <li class="nav-item">
             @Html.ActionLink("My Page", "MyPage", "Home", new { area = "" }, new { @class = "nav-link my-class" })
         </li>
@@ -25,34 +25,35 @@
     </ul>
 
 
+    
+        <ul >
+            <li class="list-inline-item">
 
-    <ul>
-        <li class="list-inline-item">
-
-            @Html.ActionLink(user +"!",
-                             "Index",
-                             "ManageProfile",
-                             routeValues: null,
-                             htmlAttributes: new {
-                                 @class = "btn btn-outline-dark my-2 my-sm-0",
-                                 title ="Edite profile" })
-        </li>
-        <li class="list-inline-item">
-            @Html.ActionLink("Log Out",
-                             "Logout",
-                             "Account",
-                             routeValues: null,
-                             htmlAttributes: new { @class="btn btn-outline-dark my-2 my-sm-0",
-                                                   title = "Logout" })
-        </li>
-    </ul>
+                @Html.ActionLink(user +"!",
+                                 "Index",
+                                 "ManageProfile",
+                                 routeValues: null,
+                                 htmlAttributes: new {
+                                     @class = "btn btn-outline-dark my-2 my-sm-0",
+                                     title ="Edite profile" })
+            </li>
+            <li class="list-inline-item">
+                @Html.ActionLink("Log Out",
+                                 "Logout",
+                                 "Account",
+                                 routeValues: null,
+                                 htmlAttributes: new { @class="btn btn-outline-dark my-2 my-sm-0",
+                                                       title = "Logout" })
+            </li>
+        </ul>
+     
 
 
-</nav>
+
         }
         else
         {
-        <ul>
+        <ul class="navbar-nav">
             <li class="list-inline-item">
                 @Html.ActionLink("Sign Up",
                                  "Register",

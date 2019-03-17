@@ -75,7 +75,7 @@ namespace SocialNetworkMvc.Controllers
                 userModels.Add(new UserModel
                 {
                     Name = i.Name,
-                    City = i.City,
+                   
                     Country = i.Country
                 });
             }
@@ -93,10 +93,11 @@ namespace SocialNetworkMvc.Controllers
                 Name = user.Name,
                 Email = user.Email,
                 Age=user.Age,
-                City=user.City,
-                Country=user.Country
+                Country=user.Country,
+                ProfilePhoto=user.Profilephoto
+                
             };
-                return View();
+                return View(myPageModel);
         }
         public ActionResult Groups()
         {
@@ -142,6 +143,26 @@ namespace SocialNetworkMvc.Controllers
             ViewBag.Message = "Post Added";
 
             return View();
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase upload)
+        {
+            if (upload != null)
+            {
+                UserDTO user = UserService.GetUser(User.Identity.Name); ;
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath($"/UsersPhotos/" + user.UserName + fileName ));
+
+                user.Profilephoto = user.UserName + fileName;
+                UserService.UpdateInformation(user);
+                
+            }
+            return RedirectToAction("MyPage");
         }
     }
 }

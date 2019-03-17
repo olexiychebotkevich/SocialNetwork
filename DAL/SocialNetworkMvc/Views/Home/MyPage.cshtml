@@ -7,22 +7,22 @@
         <div class="container">
             <div class="row" style="margin-top:10px;margin-bottom:10px;">
                 <div class="col-sm">
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:200px" />
+                    <img class="rounded" style="width:300px;height:300px" src="@Url.Content("~/UsersPhotos/"+Model.ProfilePhoto)"/>
                 </div>
                 <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
-                    <h3 style="font-size:25px;"> Basic info</h3>
+                    <h3 style="font-size:25px;"> Basic info:</h3>
+                    <br />
+                    <b>@Html.LabelFor(x => x.Name):</b>
+                    @Html.ValueFor(x => Model.Name)<br /><br />
 
+                    <b>@Html.LabelFor(x => x.Email):</b>
+                    @Html.ValueFor(x => Model.Email)<br /><br />
 
-                    @Html.ValueFor(x => Model.Name)<br />
+                    <b>@Html.LabelFor(x => x.Age):</b>
+                    @Html.ValueFor(x => Model.Age)<br /><br />
 
-
-                    @Html.ValueFor(x => Model.Email)<br />
-
-
-                    @Html.ValueFor(x => Model.City)<br />
-
-
-                    @Html.ValueFor(x => Model.Age)<br />
+                    <b>@Html.LabelFor(x => x.Country):</b>
+                    @Html.ValueFor(x => Model.Country)<br />
 
 
 
@@ -30,19 +30,15 @@
 
             </div>
         </div>
-        <div class="container" style="margin-top:20px">
-            <div class="row">
-                <div class="col-sm">
-
-                    @Html.Partial("_PartialViewPost")
-
-
-                </div>
-            </div>
-
-        </div>
-        @Html.ActionLink("AddPost", "AddPost_", "Home", new { area = "" }, new { @class = "nav-link my-class" })
-        @Html.ActionLink("AddGroup", "AddGroup_", "Home", new { area = "" }, new { @class = "nav-link my-class" })
+        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file"  name="upload" id="upload" /><br>
+            <input type="submit" class="btn btn-outline-dark" value="Upload photo" />
+        }
+        <br/>
+        @Html.ActionLink("AddPost", "AddPost_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+        <br/>
+        @Html.ActionLink("AddGroup", "AddGroup_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
 
     </div>
     </body>
