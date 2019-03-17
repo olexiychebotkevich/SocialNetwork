@@ -17,5 +17,7 @@ namespace BLL.DTO
         public virtual List<UserDTO> Subscribers { get; set; }
 
         public virtual List<PostDTO> Posts { get; set; }
+
+        public string MainImage { get; set; }
     }
 }

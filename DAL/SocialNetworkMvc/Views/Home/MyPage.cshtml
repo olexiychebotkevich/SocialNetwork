@@ -7,7 +7,33 @@
         <div class="container">
             <div class="row" style="margin-top:10px;margin-bottom:10px;">
                 <div class="col-sm">
-                    <img class="rounded" style="width:300px;height:300px" src="@Url.Content("~/UsersPhotos/"+Model.ProfilePhoto)"/>
+                    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        if (Model == null)
+                        {
+                            <label>
+
+                                <img src="@Url.Content("http://www.pngall.com/wp-content/uploads/2/Upload-PNG-Images.png")" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+
+                            </label>
+                            <br>
+                            <input type="submit" class="btn btn-outline-dark" value="Upload photo" />
+                        }
+                        else
+                        {
+                            <label>
+
+                                <img src="@Url.Content("~/UsersPhotos/"+ Model.ProfilePhoto)" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+
+                            </label>
+                            <br>
+                            
+                        }
+
+
+
+                    }
                 </div>
                 <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
                     <h3 style="font-size:25px;"> Basic info:</h3>
@@ -30,15 +56,20 @@
 
             </div>
         </div>
-        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <input type="file"  name="upload" id="upload" /><br>
-            <input type="submit" class="btn btn-outline-dark" value="Upload photo" />
-        }
-        <br/>
+        
+        <br />
         @Html.ActionLink("AddPost", "AddPost_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
-        <br/>
-        @Html.ActionLink("AddGroup", "AddGroup_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+        <br />
+
 
     </div>
-    </body>
+    
+
+    <div>
+        <br />
+        @Html.ActionLink("AddGroup", "AddGroup_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+
+
+      
+    </div>
+</body>

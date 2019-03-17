@@ -19,5 +19,7 @@ namespace DAL.Entities
         public virtual List<ClientProfile> Subscribers { get; set; }
 
         public virtual List<Post> Posts { get; set; }
+
+        public string MainImage { get; set; }
     }
 }

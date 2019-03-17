@@ -1,4 +1,4 @@
-﻿@model SocialNetworkMvc.Models.GroupModel
+﻿@model SocialNetworkMvc.Models.AddGroupModel
 @{
     ViewBag.Title = "AddGroup_";
 }
@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm">
 
-                @Html.Partial("_PartialViewAddGroup")
+                @Html.Partial("_PartialViewAddGroup",Model)
 
 
             </div>

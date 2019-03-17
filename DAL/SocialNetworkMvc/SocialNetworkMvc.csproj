@@ -172,7 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\AddGroupModel.cs" />
     <Compile Include="Models\GroupsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MyGroupsModel.cs" />
@@ -279,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="GroupsPhotos\" />
     <Folder Include="UsersPhotos\" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@ namespace SocialNetworkMvc.Controllers
     public class HomeController : Controller
     {
 
+       
 
         private IGroupService GroupService
         {
@@ -54,7 +55,11 @@ namespace SocialNetworkMvc.Controllers
 
             var user = UserService.GetUser(User.Identity.Name);
             if (user != null)
+            {
+               
                 return RedirectToAction("MyPage", "Home");
+            }
+                
             return View();
         }
 
@@ -69,14 +74,18 @@ namespace SocialNetworkMvc.Controllers
         {
 
             List<UserDTO> userDTOs = UserService.GetAllUsers();
-            List<UserModel> userModels=null;
+            List<UserModel> userModels=new List<UserModel>();
             foreach(var i in userDTOs)
             {
                 userModels.Add(new UserModel
                 {
                     Name = i.Name,
-                   
-                    Country = i.Country
+                    Country = i.Country,
+                    Age=i.Age,
+                    Email=i.Email,
+                    ProfilePhoto=i.Profilephoto
+
+                    
                 });
             }
             return View(userModels);
@@ -88,22 +97,31 @@ namespace SocialNetworkMvc.Controllers
         {
 
             UserDTO user = UserService.GetUser(User.Identity.Name);
-            MyPageModel myPageModel = new MyPageModel
+            if (user != null)
             {
-                Name = user.Name,
-                Email = user.Email,
-                Age=user.Age,
-                Country=user.Country,
-                ProfilePhoto=user.Profilephoto
-                
-            };
+                MyPageModel myPageModel = new MyPageModel
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    Age = user.Age,
+                    Country = user.Country,
+                    ProfilePhoto = user.Profilephoto
+
+                };
                 return View(myPageModel);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
         public ActionResult Groups()
         {
-
-
-            return View();
+            List<GroupsModel> groups = new List<GroupsModel>();
+            foreach (var g in GroupService.GetGroups())
+            {
+                groups.Add(new GroupsModel { Name = g.Name, Description = g.Description, MainImage = g.MainImage });
+            }
+           
+            return View(groups);
         }
         public ActionResult MyGroups()
         {
@@ -118,18 +136,32 @@ namespace SocialNetworkMvc.Controllers
             return View();
         }
 
+       
+
 
         [HttpGet]
         public  ActionResult AddGroup_()
         {
-            GroupDTO group = new GroupDTO { Name = $"New Group {DateTime.Now.Second} ", Description = "Best group from all groups in world" };
-
-            GroupService.Create(group);
-
-            ViewBag.Message = "Group Added";
-
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult AddGroup_(AddGroupModel group)
+        {
+            GroupService.Create(new GroupDTO { Name = group.Name, Description = group.Description, MainImage = group.MainImage });
+            return RedirectToAction("MyPage");
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -163,6 +195,27 @@ namespace SocialNetworkMvc.Controllers
                 
             }
             return RedirectToAction("MyPage");
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadGroupPhoto(HttpPostedFileBase upload)
+        {
+            AddGroupModel addgroup=new AddGroupModel();
+            if (upload != null)
+            {
+                addgroup = new AddGroupModel();
+
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath($"/GroupsPhotos/" +DateTime.Now.ToString("dd.MM.yyyy") + User.Identity.Name+ fileName));
+
+                addgroup.MainImage = DateTime.Now.ToString("dd.MM.yyyy") + User.Identity.Name + fileName;
+               
+
+            }
+            return View("AddGroup_", addgroup);
         }
     }
 }

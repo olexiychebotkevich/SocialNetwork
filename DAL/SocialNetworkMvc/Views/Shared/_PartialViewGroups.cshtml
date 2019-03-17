@@ -7,16 +7,19 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="margin-top:10px;margin-bottom:10px;height:150px" />
+                <img src="@Url.Content("~/GroupsPhotos/"+Model.MainImage)" class="rounded" style="margin-top:10px;margin-bottom:10px;height:180px; width:180px" />
             </div>
             <div class="col-sm" style="font-family:'MV Boli';font-size:25px; margin-top:10px">
+                <b> @Html.LabelFor(x => Model.Name):</b><br />
                 @Html.ValueFor(x => Model.Name)<br />
-                @Html.ValueFor(x => Model.Subject)<br />
 
+
+                <b> @Html.LabelFor(x => Model.Description):</b><br />
                 @Html.ValueFor(x => Model.Description)
             </div>
             <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
                 @Html.ActionLink("Add in groups", "MyGroups", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+                <br /> <br />
                 @Html.ActionLink("Go to page", "Group", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
 
             </div>

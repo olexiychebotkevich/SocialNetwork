@@ -28,62 +28,77 @@ namespace BLL.Services
         public List<GroupDTO> GetGroups()
         {
 
-            List<PostDTO> posts = null;
+            //List<PostDTO> posts = null;
 
-            List<UserDTO> subscribers = null;
+            //List<UserDTO> subscribers = null;
 
-            List < GroupDTO > groupsdto= null;
+            //List < GroupDTO > groupsdto= null;
 
-            List<Group> groups;
-            try
+            //List<Group> groups;
+            //try
+            //{
+            //    groups = Database.GroupManager.GetAllGroups();
+
+            //    //foreach(Group group in groups)
+            //    //foreach (var p in group.Posts)
+            //    //{
+            //    //    posts.Add(new PostDTO
+            //    //    {
+            //    //        Author = p.Author,
+            //    //        Subject = p.Subject,
+            //    //        Date = p.Date,
+            //    //        Photos = p.Photos,
+            //    //        Text = p.Text
+            //    //    }
+            //    //   );
+            //    //}
+
+            //    //foreach (Group group in groups)
+            //    //foreach (var s in group.Subscribers)
+            //    //{
+            //    //    subscribers.Add(new UserDTO
+            //    //    {
+            //    //        Age = s.Age,
+
+            //    //        Country = s.Country,
+            //    //        Email = s.Email,
+            //    //        UserName = s.Name
+            //    //    });
+            //    //}
+
+
+            //    foreach (var g in groups )
+            //    {
+            //        groupsdto.Add(new GroupDTO
+            //        {
+            //           Name=g.Name,
+            //           Description=g.Description,
+            //           Posts=posts,
+
+
+            //        });
+            //    }
+            //}
+            //catch
+            //{
+            //    return groupsdto;
+            //}
+
+            //return groupsdto;
+
+            List<GroupDTO> groupDTOs = new List<GroupDTO>();
+            foreach(var g in Database.GroupManager.GetAllGroups())
             {
-                groups = Database.GroupManager.GetAllGroups();
-
-                foreach(Group group in groups)
-                foreach (var p in group.Posts)
+                groupDTOs.Add(new GroupDTO
                 {
-                    posts.Add(new PostDTO
-                    {
-                        Author = p.Author,
-                        Subject = p.Subject,
-                        Date = p.Date,
-                        Photos = p.Photos,
-                        Text = p.Text
-                    }
-                   );
-                }
-
-                foreach (Group group in groups)
-                foreach (var s in group.Subscribers)
-                {
-                    subscribers.Add(new UserDTO
-                    {
-                        Age = s.Age,
-                        
-                        Country = s.Country,
-                        Email = s.Email,
-                        UserName = s.Name
-                    });
-                }
-
-
-                foreach (var g in groups )
-                {
-                    groupsdto.Add(new GroupDTO
-                    {
-                       Name=g.Name,
-                       Description=g.Description,
-                       Posts=posts,
-                       Subscribers=subscribers
-                    });
-                }
-            }
-            catch
-            {
-                return groupsdto;
+                    Name = g.Name,
+                    Description = g.Description,
+                    MainImage = g.MainImage
+                });
             }
 
-            return groupsdto;
+            return groupDTOs;
+
         }
 
         public GroupDTO GetGroup(string Name)
@@ -130,7 +145,9 @@ namespace BLL.Services
 
                     Posts = posts,
 
-                    Subscribers = subscribers
+                    Subscribers = subscribers,
+
+                    MainImage=group.MainImage
 
                 };
                
@@ -144,7 +161,7 @@ namespace BLL.Services
             Group group = Database.GroupManager.GetGroupByName(grouprDto.Name);
             if(group==null)
             {
-                group = new Group { Name = grouprDto.Name, Description = grouprDto.Description };
+                group = new Group { Name = grouprDto.Name, Description = grouprDto.Description,MainImage=grouprDto.MainImage};
                 Database.GroupManager.Create(group);
                 return new OperationDetails(true, "Group added", "");
             }

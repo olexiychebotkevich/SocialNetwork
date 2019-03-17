@@ -94,7 +94,7 @@ namespace BLL.Services
         public List<UserDTO> GetAllUsers()
         {
            
-            List<UserDTO> userDTOs=null;
+            List<UserDTO> userDTOs=new List<UserDTO>();
            
            
 
@@ -106,9 +106,11 @@ namespace BLL.Services
                     {
                         Name = i.Name,
                         Age = i.Age,
-                       
+                        Profilephoto=i.Profilephoto,
                         Country = i.Country,
-                        Email = i.Email,
+                        Email = i.Email
+                        
+                        
                     });
             }
 

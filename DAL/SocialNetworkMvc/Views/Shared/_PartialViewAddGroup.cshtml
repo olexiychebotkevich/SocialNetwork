@@ -1,4 +1,4 @@
-﻿@model SocialNetworkMvc.Models.GroupModel
+﻿@model SocialNetworkMvc.Models.AddGroupModel
 @{
     ViewBag.Title = "_PartialViewAddGroup";
 }
@@ -7,24 +7,61 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="margin-top:10px;margin-bottom:10px;height:150px" />
+                @using (Html.BeginForm("UploadGroupPhoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    if (Model == null)
+                    {
+                        <label>
+
+                            <img src="@Url.Content("http://www.pngall.com/wp-content/uploads/2/Upload-PNG-Images.png")" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+
+                        </label>
+                        <br>
+                        <input type="submit" class="btn btn-outline-dark" value="Upload photo" />
+                    }
+                    else
+                    {
+                        <label>
+
+                            <img src="@Url.Content("~/GroupsPhotos/"+ Model.MainImage)" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+
+                        </label>
+                        <br>
+                        <input type="submit" class="btn btn-outline-dark" value="Upload photo" />
+                    }
+
+
+
+                }
             </div>
             <div class="col-sm" style="font-family:'MV Boli';font-size:25px; margin-top:10px">
-                @Html.LabelFor(x => Model.Name)
-                @Html.EditorFor(x => Model.Name)<br />
+                @using (Html.BeginForm("AddGroup_", "Home", FormMethod.Post))
+                {
 
-                @Html.LabelFor(x => Model.Subject)
-                @Html.EditorFor(x => Model.Subject)<br />
+                    @Html.LabelFor(x => Model.Name)
+                    @Html.EditorFor(x => Model.Name)<br />
 
-                @Html.LabelFor(x => Model.Description)
-                @Html.EditorFor(x => Model.Description)
+                    @Html.LabelFor(x => Model.Subject)
+                    @Html.EditorFor(x => Model.Subject)<br />
+
+                    @Html.LabelFor(x => Model.Description)
+                    @Html.EditorFor(x => Model.Description)
+
+                    @Html.HiddenFor(x=>x.MainImage)
+                    <br />
+                    <br />
+                    <input value="AddGroup" type="submit" class="btn btn-outline-dark my-2 my-sm-0" />
+
+
+                }
             </div>
 
-        </div>
-        <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
-            @Html.ActionLink("Add group", "AddGroup_", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+            </div>
+        @*<div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
+            
 
-        </div>
+        </div>*@
     </div>
 </div>
 

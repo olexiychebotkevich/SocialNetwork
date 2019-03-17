@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SocialNetworkMvc.Models.UserModel>
+﻿@model ICollection<SocialNetworkMvc.Models.UserModel>
 @{
     ViewBag.Title = "People";
 }
@@ -9,23 +9,30 @@
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign out</button>
         </form>*@
     <div>
-      
-            <form class="form-inline my-2 my-lg-0 float-right">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign out</button>
-            </form>
-        
-            <ul class="list-inline ">
-                @foreach (var item in Model)
-                {
-                    @Html.Partial("_PartialViewUser",item)
-                }
+
+        <form class="form-inline my-2 my-lg-0 float-right">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign out</button>
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_PartialViewUser", item)
+            <br />
+            <br />
+            <br />
+        }
 
 
 
 
 
-            </ul>
+
     </div>
 
 </body>

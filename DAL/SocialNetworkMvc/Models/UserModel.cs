@@ -8,11 +8,18 @@ namespace SocialNetworkMvc.Models
 {
     public class UserModel
     {
+
         [Required]
-        public string City { get; set; }
+        public string Email { get; set; }
         [Required]
         public string Country { get; set; }
         [Required]
+        public string City { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
+        public int Age { get; set; }
+        [Required]
+        public string ProfilePhoto { get; set; }
     }
 }

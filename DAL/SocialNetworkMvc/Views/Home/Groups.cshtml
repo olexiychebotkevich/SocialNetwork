@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ICollection<SocialNetworkMvc.Models.GroupsModel>
+@{
     ViewBag.Title = "Groups";
 }
 <body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
@@ -7,9 +8,20 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign out</button>
         </form>
-        <ul class="list-inline">
-            @Html.Partial("_PartialViewGroups")
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        @foreach (var p in Model)
+        {
+            @Html.Partial("_PartialViewGroups", p)
+            <br />
+            <br />
+            <br />
+        }
 
-        </ul>
+
+
     </div>
 </body>
