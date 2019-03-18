@@ -119,7 +119,7 @@ namespace BLL.Services
                         Author = p.Author,
                         Subject = p.Subject,
                         Date = p.Date,
-                        Photos = p.Photos,
+                        Photo = p.Photo,
                         Text = p.Text
                     }
                    );

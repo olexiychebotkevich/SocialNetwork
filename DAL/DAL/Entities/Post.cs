@@ -13,7 +13,7 @@ namespace DAL.Entities
 
         public string Text { get; set; }
 
-        public List<string> Photos { get; set; }
+        public string Photo { get; set; }
 
         public string Author { get; set; }
 

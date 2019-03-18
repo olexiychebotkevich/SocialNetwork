@@ -11,7 +11,7 @@ namespace BLL.DTO
 
         public string Text { get; set; }
 
-        public List<string> Photos { get; set; }
+        public string Photo { get; set; }
 
         public string Author { get; set; }
 

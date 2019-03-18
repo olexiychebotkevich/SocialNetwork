@@ -30,7 +30,7 @@ namespace BLL.Services
 
             try
             {
-                Database.PostManager.Create(new Post { Author = postDto.Author, Date = postDto.Date, Subject = postDto.Subject, Photos = postDto.Photos, Text = postDto.Text });
+                Database.PostManager.Create(new Post { Author = postDto.Author, Date = postDto.Date, Subject = postDto.Subject, Photo = postDto.Photo, Text = postDto.Text });
                 return new OperationDetails(true, "Group added", "");
             }
             catch
@@ -53,7 +53,7 @@ namespace BLL.Services
                         Author=p.Author,
                         Subject=p.Subject,
                         Date=p.Date,
-                        Photos=p.Photos,
+                        Photo=p.Photo,
                         Text=p.Text
                     }
                     );

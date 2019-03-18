@@ -98,7 +98,7 @@ namespace SocialNetworkMvc.Controllers
         [HttpGet]
         public ActionResult MyPage()
         {
-            List<PostDTO> posts;
+            List<PostDTO> posts=new List<PostDTO>();
             try
             {
                  posts = PostService.GetAllPosts().FindAll(x => x.Author == User.Identity.Name);
@@ -111,31 +111,21 @@ namespace SocialNetworkMvc.Controllers
             
             List<PostModel> postmodels = new List<PostModel>();
 
-            if (posts != null&&posts.Count>1)
+            if (posts != null)
             {
                 foreach (var p in posts)
                 {
                     postmodels.Add(new PostModel
                     {
                         Date = p.Date,
-                        PostImage = p.Photos[0],
+                       
                         Subject = p.Subject,
                         Text = p.Text,
                         UserAuthor = p.Author
                     });
                 }
             }
-            else
-            {
-                postmodels.Add(new PostModel
-                {
-                    Date = posts[0].Date,
-                    PostImage = posts[0].Photos[0],
-                    Subject = posts[0].Subject,
-                    Text = posts[0].Text,
-                    UserAuthor = posts[0].Author
-                });
-            }
+           
 
             UserDTO user = UserService.GetUser(User.Identity.Name);
 
@@ -240,9 +230,9 @@ namespace SocialNetworkMvc.Controllers
         {
             List<string> photos = new List<string>();
 
-            photos.Add(postmodel.PostImage);
+           
 
-            PostDTO postDTO = new PostDTO { Author = User.Identity.Name, Subject = postmodel.Subject, Date = DateTime.Now, Text= postmodel.Text,Photos= photos };
+            PostDTO postDTO = new PostDTO { Author = User.Identity.Name, Subject = postmodel.Subject, Date = DateTime.Now, Text= postmodel.Text,Photo= postmodel.PostImage };
 
             PostService.Create(postDTO);
 
