@@ -63,12 +63,10 @@ namespace SocialNetworkMvc.Controllers
             return View();
         }
 
-        public ActionResult Friends()
-        {
-           
 
-            return View();
-        }
+
+
+        
 
         public ActionResult People()
         {
@@ -92,11 +90,57 @@ namespace SocialNetworkMvc.Controllers
         }
 
 
+
+
+
+
+
         [HttpGet]
         public ActionResult MyPage()
         {
+            List<PostDTO> posts;
+            try
+            {
+                 posts = PostService.GetAllPosts().FindAll(x => x.Author == User.Identity.Name);
+            }
+            catch
+            {
+                posts = null;
+            }
+           
+            
+            List<PostModel> postmodels = new List<PostModel>();
+
+            if (posts != null&&posts.Count>1)
+            {
+                foreach (var p in posts)
+                {
+                    postmodels.Add(new PostModel
+                    {
+                        Date = p.Date,
+                        PostImage = p.Photos[0],
+                        Subject = p.Subject,
+                        Text = p.Text,
+                        UserAuthor = p.Author
+                    });
+                }
+            }
+            else
+            {
+                postmodels.Add(new PostModel
+                {
+                    Date = posts[0].Date,
+                    PostImage = posts[0].Photos[0],
+                    Subject = posts[0].Subject,
+                    Text = posts[0].Text,
+                    UserAuthor = posts[0].Author
+                });
+            }
 
             UserDTO user = UserService.GetUser(User.Identity.Name);
+
+
+            
             if (user != null)
             {
                 MyPageModel myPageModel = new MyPageModel
@@ -105,7 +149,8 @@ namespace SocialNetworkMvc.Controllers
                     Email = user.Email,
                     Age = user.Age,
                     Country = user.Country,
-                    ProfilePhoto = user.Profilephoto
+                    ProfilePhoto = user.Profilephoto,
+                    posts = postmodels
 
                 };
                 return View(myPageModel);
@@ -113,6 +158,9 @@ namespace SocialNetworkMvc.Controllers
             else
                 return RedirectToAction("Index", "Home");
         }
+
+
+
         public ActionResult Groups()
         {
             List<GroupsModel> groups = new List<GroupsModel>();
@@ -123,17 +171,33 @@ namespace SocialNetworkMvc.Controllers
            
             return View(groups);
         }
+
+
+
+
+
         public ActionResult MyGroups()
         {
 
 
             return View();
         }
-        public ActionResult Group()
+
+
+
+
+        [HttpPost]
+        public ActionResult Group(GroupsModel groupsModel)
         {
-
-
-            return View();
+            GroupDTO group = GroupService.GetGroup(groupsModel.Name);
+            GroupModel groupModel = new GroupModel
+            {
+                Name = group.Name,
+                Description = group.Description,
+                MainImage = group.MainImage
+            };
+            
+            return View(groupModel);
         }
 
        
@@ -159,23 +223,34 @@ namespace SocialNetworkMvc.Controllers
 
 
 
-
-
-
-
-
-
         [HttpGet]
         public ActionResult AddPost_()
         {
-            PostDTO postDTO = new PostDTO { Author = "Vasyan", Subject = "Fun", Date = DateTime.Now, Text = "New Vasysan post" };
+            
+           
 
-            PostService.Create(postDTO);
-
-            ViewBag.Message = "Post Added";
 
             return View();
         }
+
+
+
+        [HttpPost]
+        public ActionResult AddPost_(PostModel postmodel)
+        {
+            List<string> photos = new List<string>();
+
+            photos.Add(postmodel.PostImage);
+
+            PostDTO postDTO = new PostDTO { Author = User.Identity.Name, Subject = postmodel.Subject, Date = DateTime.Now, Text= postmodel.Text,Photos= photos };
+
+            PostService.Create(postDTO);
+
+
+            return View("MyPage");
+        }
+
+
 
 
 
@@ -216,6 +291,41 @@ namespace SocialNetworkMvc.Controllers
 
             }
             return View("AddGroup_", addgroup);
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadPostImage(HttpPostedFileBase upload)
+        {
+            PostModel addpost = new PostModel();
+            if (upload != null)
+            {
+                addpost = new PostModel();
+
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath($"/PostsImages/" + DateTime.Now.ToString("dd.MM.yyyy") + User.Identity.Name + "post" + fileName));
+
+                addpost.PostImage = DateTime.Now.ToString("dd.MM.yyyy") + User.Identity.Name + "post" + fileName;
+
+
+            }
+            return View("AddPost_", addpost);
+        }
+
+
+
+
+        
+
+
+        [HttpPost]
+        public ActionResult ViewUserPage(MyPageModel myPageModel)
+        {
+           
+
+            return View(myPageModel);
         }
     }
 }

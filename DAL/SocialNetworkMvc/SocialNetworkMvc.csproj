@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddGroupModel.cs" />
+    <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\GroupsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MyGroupsModel.cs" />
@@ -276,10 +277,12 @@
     <Content Include="Views\Shared\_PartialLoginView.cshtml" />
     <Content Include="Views\Home\AddPost_.cshtml" />
     <Content Include="Views\Home\AddGroup_.cshtml" />
+    <Content Include="Views\Home\ViewUserPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="GroupsPhotos\" />
+    <Folder Include="PostsImages\" />
     <Folder Include="UsersPhotos\" />
   </ItemGroup>
   <ItemGroup>

@@ -8,22 +8,22 @@
         <div class="container">
             <div class="row" style="margin-top:10px;margin-bottom:10px;">
                 <div class="col-sm">
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="height:200px" />
+                    <img src="@Url.Content("~/GroupsPhotos/"+Model.MainImage)" style="height:200px;width:200px"class="rounded" />
                 </div>
                 <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
-                    <h3 style="font-size:25px;"> Basic info</h3>
+                    <h3 style="font-size:25px;"> Basic info:</h3>
 
-
+                    <b>@Html.LabelFor(x => Model.Name)</b><br />
                     @Html.ValueFor(x => Model.Name)<br />
 
 
-                    @Html.ValueFor(x => Model.Subject)<br />
-
-
+                    <b>@Html.LabelFor(x => Model.Description)</b><br />
                     @Html.ValueFor(x => Model.Description)<br />
 
+                    <b>@Html.LabelFor(x => Model.Author)</b><br />
+                    @Html.ValueFor(x => Model.Author)<br />
 
-                    @Html.ValueFor(x => Model.User)<br />
+                   
 
 
 
@@ -31,7 +31,7 @@
 
             </div>
         </div>
-        <div class="container" style="margin-top:20px">
+        @*<div class="container" style="margin-top:20px">
             <div class="row">
                 <div class="col-sm">
 
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>*@
     </div>
 </body>
 

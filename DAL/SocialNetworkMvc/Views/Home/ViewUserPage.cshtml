@@ -1,0 +1,66 @@
+﻿@model SocialNetworkMvc.Models.MyPageModel
+@{
+    ViewBag.Title = "ViewUserPage";
+}
+
+<body style="background-image:url('https://image.freepik.com/free-vector/no-translate-detected_1048-982.jpg')">
+    <div>
+        <div class="container">
+            <div class="row" style="margin-top:10px;margin-bottom:10px;">
+                <div class="col-sm">
+                   
+                       @if (Model.ProfilePhoto == null)
+                       {
+                            
+
+                                <img src="@Url.Content("http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png")" style="width:250px;height:250px" /> 
+
+                            
+                            <br>
+                            
+                        }
+                        else
+                        {
+                            
+
+                                <img src="@Url.Content("~/UsersPhotos/"+ Model.ProfilePhoto)" style="width:250px;height:250px" /> 
+
+                            
+                            <br>
+
+                        }
+
+
+
+                    
+                </div>
+                <div class="col-sm" style="font-family:'MV Boli';font-size:18px;">
+                    <h3 style="font-size:25px;"> Basic info:</h3>
+                    <br />
+                    <b>@Html.LabelFor(x => x.Name):</b>
+                    @Html.ValueFor(x => Model.Name)<br /><br />
+
+                    <b>@Html.LabelFor(x => x.Email):</b>
+                    @Html.ValueFor(x => Model.Email)<br /><br />
+
+                    <b>@Html.LabelFor(x => x.Age):</b>
+                    @Html.ValueFor(x => Model.Age)<br /><br />
+
+                    <b>@Html.LabelFor(x => x.Country):</b>
+                    @Html.ValueFor(x => Model.Country)<br />
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+       
+
+
+    </div>
+
+
+   
+</body>

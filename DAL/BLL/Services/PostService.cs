@@ -43,7 +43,7 @@ namespace BLL.Services
 
         public List<PostDTO> GetAllPosts()
         {
-            List<PostDTO> postDTOs = null;
+            List<PostDTO> postDTOs = new List<PostDTO>();
             foreach(var p in Database.PostManager.GetAllPosts())
             {
                 postDTOs.Add

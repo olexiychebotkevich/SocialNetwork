@@ -20,7 +20,14 @@
             <div class="col-sm" style=" margin-top:10px;margin-bottom:10px;">
                 @Html.ActionLink("Add in groups", "MyGroups", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
                 <br /> <br />
-                @Html.ActionLink("Go to page", "Group", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })
+                @*@Html.ActionLink("Go to page", "Group", "Home", new { area = "" }, new { @class = "btn btn-outline-dark" })*@
+                @using (Html.BeginForm("Group", "Home", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.Name)
+                   
+
+                    <input type="submit" value="Go to page" class="btn btn-outline-dark">
+                }
 
             </div>
         </div>

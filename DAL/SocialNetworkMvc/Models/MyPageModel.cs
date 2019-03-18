@@ -20,5 +20,8 @@ namespace SocialNetworkMvc.Models
         public int Age { get; set; }
         [Required]
         public string ProfilePhoto { get; set; }
+
+        public List<PostModel> posts { get; set; }
+        
     }
 }

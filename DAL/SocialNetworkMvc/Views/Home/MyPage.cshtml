@@ -72,4 +72,15 @@
 
       
     </div>
+
+
+    <div>
+        @if (Model.posts != null)
+        {
+            foreach (var p in Model.posts)
+            {
+                @Html.Partial("_PartialViewPost", p)
+            }
+        }
+    </div>
 </body>

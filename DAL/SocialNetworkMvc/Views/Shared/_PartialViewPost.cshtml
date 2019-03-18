@@ -7,11 +7,11 @@
 <div>
    
     <div class="card" style="width: 18rem; background-color:sandybrown">
-        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
+        <img src="@Url.Content("~/PostImages/"+Model.PostImage)" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">  @Html.ValueFor(x => Model.Subject)</h5>
             <p class="card-text">  @Html.ValueFor(x => Model.Text)</p>
-            <p class="card-text">  @Html.ValueFor(x => Model.User)</p>
+            <p class="card-text">  @Html.ValueFor(x => Model.UserAuthor)</p>
 
         </div>
     </div>

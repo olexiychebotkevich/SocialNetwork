@@ -13,8 +13,10 @@ namespace SocialNetworkMvc.Models
         [Required]
         public string Text { get; set; }
         [Required]
-        public string User { get; set; }
+        public string UserAuthor { get; set; }
         [Required]
         public DateTime Date { get; set; }
+        [Required]
+        public string PostImage { get; set; }
     }
 }
