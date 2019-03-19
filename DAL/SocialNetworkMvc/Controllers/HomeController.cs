@@ -98,7 +98,7 @@ namespace SocialNetworkMvc.Controllers
         [HttpGet]
         public ActionResult MyPage()
         {
-            List<PostDTO> posts;
+            List<PostDTO> posts=new List<PostDTO>();
             try
             {
                  posts = PostService.GetAllPosts().FindAll(x => x.Author == User.Identity.Name);

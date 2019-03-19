@@ -30,7 +30,7 @@ namespace BLL.Services
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
-                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.UserName};
+                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email};
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
@@ -52,6 +52,7 @@ namespace BLL.Services
         {
             ClaimsIdentity claim = null;
             // находим пользователя
+            userDto.Name = "Vasyan";
             ApplicationUser user = await Database.UserManager.FindAsync(userDto.Email, userDto.Password);
             
             

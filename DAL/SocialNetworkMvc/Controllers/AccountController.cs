@@ -43,14 +43,11 @@ namespace SocialNetworkMvc.Controllers
             }
         }
 
-        public ActionResult LoginModel()
-        {
-            return View();
-        }
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> LoginModel(LoginModel model)
+        public async Task<ActionResult> Login(LoginModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -73,7 +70,7 @@ namespace SocialNetworkMvc.Controllers
                 }
             }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
 

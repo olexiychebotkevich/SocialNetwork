@@ -21,42 +21,42 @@
                             </div>
                             <div class="card-body">
                                 @*<form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">*@
-                                    @using (Html.BeginForm ("LoginModel","Account", FormMethod.Post))           
-                                    {
-                                                    @Html.AntiForgeryToken()
-                                        @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
-                                        <div>
-                                            @Html.ValidationSummary()
+                                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("returnUrl", new { value = ViewBag.returnUrl })
+                                    <div>
+                                        @Html.ValidationSummary()
 
 
-                                            <div class="form-group" style="font-family:Algerian;">
-                                                @Html.LabelFor(x => x.Email)<br>
-                                                @Html.EditorFor(x => x.Email)
-                                                @Html.ValidationMessageFor(x => x.Email)
+                                        <div class="form-group" style="font-family:Algerian;">
+                                            @Html.LabelFor(x => x.Email)<br>
+                                            @Html.EditorFor(x => x.Email)
+                                            @Html.ValidationMessageFor(x => x.Email)
 
-                                            </div>
-                                            <div class="form-group" style="font-family:Algerian;">
+                                        </div>
+                                        <div class="form-group" style="font-family:Algerian;">
 
-                                                @Html.LabelFor(x => x.Password)<br>
-                                                @Html.PasswordFor(x => x.Password)
-                                                @Html.ValidationMessageFor(x => x.Password)
-                                            </div>
-
-
-
+                                            @Html.LabelFor(x => x.Password)<br>
+                                            @Html.PasswordFor(x => x.Password)
+                                            @Html.ValidationMessageFor(x => x.Password)
                                         </div>
 
 
-                                        <input value="Login" type="submit" class="btn btn-outline-dark my-2 my-sm-0" />
 
-                                        @Html.ActionLink("Registration",
-                                        "Registration",
-                                        "Account",
-                                        routeValues: null,
-                                        htmlAttributes: new {
-                                        @class = "btn btn-outline-dark my-2 my-sm-0",
-                                        title ="Register new user" })
-                                    }
+                                    </div>
+
+
+                                    <input value="Login" type="submit" class="btn btn-outline-dark my-2 my-sm-0" />
+                                }
+                                @Html.ActionLink("Registration",
+                                "Registration",
+                                "Account",
+                                routeValues: null,
+                                htmlAttributes: new {
+                                @class = "btn btn-outline-dark my-2 my-sm-0",
+                                title ="Register new user" })
+
 
 
 
