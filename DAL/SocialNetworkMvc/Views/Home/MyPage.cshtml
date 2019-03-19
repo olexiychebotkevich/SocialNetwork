@@ -10,11 +10,11 @@
                     @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
 
-                        if (Model == null)
+                        if (Model.ProfilePhoto == null)
                         {
                             <label>
 
-                                <img src="@Url.Content("http://www.pngall.com/wp-content/uploads/2/Upload-PNG-Images.png")" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+                                <img src="@Url.Content("http://www.pngall.com/wp-content/uploads/2/Upload-PNG-Images.png")" class="rounded" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
 
                             </label>
                             <br>
@@ -24,7 +24,7 @@
                         {
                             <label>
 
-                                <img src="@Url.Content("~/UsersPhotos/"+ Model.ProfilePhoto)" style="width:250px;height:250px" /> <input name="upload" id="upload" type="file" style="display: none;">
+                                <img src="@Url.Content("~/UsersPhotos/"+ Model.ProfilePhoto)" style="width:250px;height:250px" class="rounded" /> <input name="upload" id="upload" type="file" style="display: none;">
 
                             </label>
                             <br>
