@@ -7,7 +7,7 @@
 <div>
    
     <div class="card" style="width: 18rem; background-color:sandybrown">
-        <img src="@Url.Content("~/PostImages/"+Model.PostImage)" class="card-img-top" alt="...">
+        <img src="@Url.Content("~/PostsImages/"+ Model.PostImage)" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">  @Html.ValueFor(x => Model.Subject)</h5>
             <p class="card-text">  @Html.ValueFor(x => Model.Text)</p>
